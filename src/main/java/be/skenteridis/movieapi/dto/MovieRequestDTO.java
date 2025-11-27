@@ -3,6 +3,7 @@ package be.skenteridis.movieapi.dto;
 import be.skenteridis.movieapi.model.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +20,7 @@ public class MovieRequestDTO {
 
     @NotNull(message = "Year can't be null!")
     @Min(value = 1880, message = "Year must be reasonable (>1880)")
-    @Min(value = 2100, message = "Year must be reasonable (<2100)")
+    @Max(value = 2100, message = "Year must be reasonable (<2100)")
     private Short year;
 
     public String getTitle() {
